@@ -7,9 +7,10 @@ import css from "./MovieDetailsPage.module.css";
 const MovieDetailsPage = () => {
    const { movieId } = useParams();
 
-   const [movie, setMovie] = useState("");
+   const [movie, setMovie] = useState({});
 
    useEffect(() => {
+      if (!movieId) return;
       const getMovie = async () => {
          const data = await getMovieById(movieId);
          setMovie(data);
@@ -23,7 +24,7 @@ const MovieDetailsPage = () => {
    const genresName = genres?.map((item) => item.name)?.join(", ");
 
    return (
-      <>
+      <div>
          <div className={css.card}>
             <img className={css.photo} src={``} alt={``} />
          </div>
@@ -35,7 +36,7 @@ const MovieDetailsPage = () => {
             <h4>Genres</h4>
             <p>{genresName}</p>
          </div>
-      </>
+      </div>
    );
 };
 
