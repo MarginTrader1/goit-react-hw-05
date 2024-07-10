@@ -20,6 +20,16 @@ export const getTrendMovies = async () => {
 };
 
 // запрос на trending films
+export const searchMovies = async (query) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
+    options
+  );
+
+  return response.data;
+};
+
+// запрос на trending films
 export const getMovieById = async (id) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
