@@ -24,31 +24,35 @@ const MovieDetailsPage = () => {
   const genresName = genres?.map((item) => item.name)?.join(", ");
 
   return (
-    <>
-      <div>
+    <section className={css.container}>
+      <div className={css.movie}>
         <div className={css.card}>
           <img
             className={css.photo}
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={``}
+            alt={`movie photo`}
           />
         </div>
-        <div>
+        <div className={css.movieInfo}>
           <h2>{original_title}</h2>
-          <p>{vote_average}</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h4>Genres</h4>
-          <p>{genresName}</p>
+          <p>{`Raiting: ${vote_average}`}</p>
+          <div className={css.overview}>
+            <h4>Overview</h4>
+            <p>{overview}</p>
+          </div>
+          <div className={css.overview}>
+            <h4>Genres</h4>
+            <p>{genresName}</p>
+          </div>
         </div>
       </div>
-      <div>
+      <div className={css.edInfo}>
         <h4>Editional information</h4>
         <Link to="cast">Cast</Link>
         <Link to="reviews">Reviews</Link>
       </div>
       <Outlet />
-    </>
+    </section>
   );
 };
 

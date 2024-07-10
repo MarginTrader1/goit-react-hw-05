@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.movie {
+  display: flex;
+  gap: 20px;
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.edInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

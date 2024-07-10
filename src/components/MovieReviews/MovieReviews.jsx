@@ -22,7 +22,7 @@ const MovieReviews = () => {
       {reviews.length > 0 ? (
         reviews.map(({ author, content, id }) => {
           return (
-            <div key={id}>
+            <div key={id} className={css.review}>
               <h4>{author}</h4>
               <p>{content}</p>
             </div>
