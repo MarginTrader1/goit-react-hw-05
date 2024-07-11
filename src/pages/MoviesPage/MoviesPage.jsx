@@ -4,10 +4,14 @@ import MovieList from "../../components/MovieList/MovieList.jsx";
 import { useEffect, useState } from "react";
 
 import css from "./MoviesPage.module.css";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
   const [movie, setMovie] = useState([]);
   const [topic, setTopic] = useState("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.get(`a`));
 
   const handleSearch = (evt) => {
     evt.preventDefault();
