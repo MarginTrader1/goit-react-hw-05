@@ -4,8 +4,8 @@ const MovieList = ({ movies }) => {
   const location = useLocation(); // хук для определения url текущей странички
 
   //вытягиваем параметры поиска чтобы их сохранить и передаем в стейт для кнопки возврата назад
-  const { pathname, search } = location;
-
+  const { pathname } = location;
+ 
   return (
     <ul>
       {movies.map(({ id, original_title }) => (
@@ -13,7 +13,7 @@ const MovieList = ({ movies }) => {
           {/* проверка на путь: HomePage или MoviesPage */}
           <Link
             to={pathname === "/" ? `movies/${id}` : `${id}`}
-            state={`${pathname}${search}`} //ссылка для следующей страницы
+            state={location} //ссылка для следующей страницы
           >
             {original_title}
           </Link>

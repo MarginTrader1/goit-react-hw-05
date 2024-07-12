@@ -4,9 +4,14 @@ import { useEffect, useState } from "react";
 
 import css from "./MovieDetailsPage.module.css";
 
+const defaultImg =
+  "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=no+poster";
+
 const MovieDetailsPage = () => {
   const { movieId } = useParams(); // хук повертає динамічні параметри з url
-  const { state } = useLocation(); // хук для определения url текущей странички
+  const { state } = useLocation(); // получаем стейт c предыдущей страницы
+
+  const backlink = state === null ? `/movies` : `${state.pathname}${state.search}`;
 
   const [movie, setMovie] = useState({});
 
@@ -26,12 +31,16 @@ const MovieDetailsPage = () => {
 
   return (
     <section className={css.container}>
-      <Link to={state}>Go back</Link>
+      <Link to={backlink}>Go back</Link>
       <div className={css.movie}>
         <div className={css.card}>
           <img
             className={css.photo}
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            src={
+              poster_path && poster_path.trim() !== ""
+                ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                : defaultImg
+            }
             alt={`movie photo`}
           />
         </div>

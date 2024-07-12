@@ -9,9 +9,10 @@ import { useSearchParams } from "react-router-dom";
 const MoviesPage = () => {
   const [movie, setMovie] = useState([]);
   
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const topic = searchParams.get(`query`) ?? "";
+  // хук для сохранения параметров поиска 
+  const [searchParams, setSearchParams] = useSearchParams(); 
+  //задаем дефолтное значение для поиска 
+  const topic = searchParams.get(`query`) ?? ""; 
 
   const handleSearch = (evt) => {
     evt.preventDefault();
