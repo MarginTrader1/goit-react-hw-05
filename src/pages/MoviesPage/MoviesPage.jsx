@@ -8,16 +8,16 @@ import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
   const [movie, setMovie] = useState([]);
-  const [topic, setTopic] = useState("");
+  
 
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get(`a`));
+  const topic = searchParams.get(`query`) ?? "";
 
   const handleSearch = (evt) => {
     evt.preventDefault();
     const form = evt.target; //доступ к форме
     const searchTerm = form.elements.search.value; //значение инпута
-    setTopic(searchTerm);
+    setSearchParams({ query: searchTerm }); //перезаписываем параметры поиска в url
     form.reset();
   };
 
@@ -27,7 +27,6 @@ const MoviesPage = () => {
     }
     const getMovie = async () => {
       const data = await searchMovies(topic);
-      console.log(data.results);
       setMovie(data.results);
     };
     getMovie();

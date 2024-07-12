@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const MovieList = ({ movies }) => {
+  const location = useLocation(); // хук для определения url текущей странички
+
+  //вытягиваем параметры поиска чтобы их сохранить и передаем в стейт для кнопки возврата назад
+  const { pathname, search } = location;
+
   return (
     <ul>
       {movies.map(({ id, original_title }) => (
         <li key={id}>
-          <Link to={`movies/${id}`}>{original_title}</Link>
+          {/* проверка на путь: HomePage или MoviesPage */}
+          <Link
+            to={pathname === "/" ? `movies/${id}` : `${id}`}
+            state={`${pathname}${search}`} //ссылка для следующей страницы
+          >
+            {original_title}
+          </Link>
         </li>
       ))}
     </ul>

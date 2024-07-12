@@ -1,11 +1,12 @@
-import { useParams, Outlet, Link } from "react-router-dom";
+import { useParams, Outlet, Link, useLocation } from "react-router-dom";
 import { getMovieById } from "../../api.jsx";
 import { useEffect, useState } from "react";
 
 import css from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
-  const { movieId } = useParams();
+  const { movieId } = useParams(); // хук повертає динамічні параметри з url
+  const { state } = useLocation(); // хук для определения url текущей странички
 
   const [movie, setMovie] = useState({});
 
@@ -25,6 +26,7 @@ const MovieDetailsPage = () => {
 
   return (
     <section className={css.container}>
+      <Link to={state}>Go back</Link>
       <div className={css.movie}>
         <div className={css.card}>
           <img
