@@ -10,8 +10,6 @@ const MovieDetailsPage = () => {
    const { movieId } = useParams(); // хук повертає динамічні параметри з url
    const { state } = useLocation(); // получаем стейт c предыдущей страницы
 
-   //  const backlink = state === null ? `/movies` : `${state.pathname}${state.search}`;
-
    // если state null то `/movies` и сохраняем --->
    // в рефе чтобы не менялись значения при перемонтировании компонента
    const backLinkRef = useRef(state ?? `/movies`);
