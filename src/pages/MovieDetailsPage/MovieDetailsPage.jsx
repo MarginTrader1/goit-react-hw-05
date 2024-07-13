@@ -1,6 +1,7 @@
 import { useParams, Outlet, Link, useLocation } from "react-router-dom";
-import { getMovieById } from "../../api.jsx";
 import { Suspense, useEffect, useRef, useState } from "react";
+import { getMovieById } from "../../api.jsx";
+import { GoArrowLeft } from "react-icons/go";
 
 import css from "./MovieDetailsPage.module.css";
 
@@ -32,7 +33,10 @@ const MovieDetailsPage = () => {
 
    return (
       <section className={css.container}>
-         <Link to={backLinkRef.current}>Go back</Link>
+         <Link to={backLinkRef.current} className={css.backlink}>
+            <GoArrowLeft />
+            {`go back`}
+         </Link>
          <div className={css.movie}>
             <div className={css.card}>
                <img
