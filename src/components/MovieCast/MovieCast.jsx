@@ -45,7 +45,7 @@ const MovieCast = () => {
                })}
             </ul>
          ) : (
-            <p>No cast to this movie</p>
+            <p>No cast for this movie</p>
          )}
       </>
    );
